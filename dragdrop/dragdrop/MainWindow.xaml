@@ -1,0 +1,31 @@
+﻿<Window x:Class="dragdrop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dragdrop"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Canvas TextElement.FontSize="20" x:Name="canvas">
+            <Grid Canvas.Top="10" Canvas.Left="10"  MouseLeftButtonDown="shape_MouseLeftButtonDown" MouseMove="shape_MouseMove" MouseLeftButtonUp="shape_MouseLeftButtonUp">
+                <Rectangle Fill="OrangeRed" HorizontalAlignment="Center" Height="100" Stroke="Black" VerticalAlignment="Center" Width="100"/>
+                <Label Content="Stůl 1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Canvas.Top="10" Canvas.Left="143"  MouseLeftButtonDown="shape_MouseLeftButtonDown" MouseMove="shape_MouseMove" MouseLeftButtonUp="shape_MouseLeftButtonUp">
+                <Rectangle Fill="Blue" HorizontalAlignment="Center" Height="100" Stroke="Black" VerticalAlignment="Center" Width="100"/>
+                <Label Content="Stůl 2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Canvas.Top="10" Canvas.Left="272"  MouseLeftButtonDown="shape_MouseLeftButtonDown" MouseMove="shape_MouseMove" MouseLeftButtonUp="shape_MouseLeftButtonUp">
+                <Rectangle Fill="LawnGreen" HorizontalAlignment="Center" Height="100" Stroke="Black" VerticalAlignment="Center" Width="100"/>
+                <Label Content="Stůl 3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Canvas.Top="10" Canvas.Left="407"  MouseLeftButtonDown="shape_MouseLeftButtonDown" MouseMove="shape_MouseMove" MouseLeftButtonUp="shape_MouseLeftButtonUp">
+                <Rectangle Fill="Yellow" HorizontalAlignment="Center" Height="100" Stroke="Black" VerticalAlignment="Center" Width="100"/>
+                <Label Content="Stůl 4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Canvas>
+        <Button x:Name="writeData" Content="Save" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" Margin="0,0,10,10" Click="writeData_Click"/>
+
+    </Grid>
+</Window>
