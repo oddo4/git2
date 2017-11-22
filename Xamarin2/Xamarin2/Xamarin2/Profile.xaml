@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xamarin2.Profile"
+             Title="Back">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Red">
+            <StackLayout HeightRequest="180" BackgroundColor="OrangeRed">
+                
+            </StackLayout>
+            <ScrollView HeightRequest="200" BackgroundColor="Yellow">
+                <StackLayout>
+                    <Label Text="Name Name" HorizontalOptions="Center"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
