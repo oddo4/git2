@@ -2,15 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xamarin2.Profile"
-             Title="Back">
+             Title="Profile">
     <ContentPage.Content>
         <StackLayout BackgroundColor="Red">
             <StackLayout HeightRequest="180" BackgroundColor="OrangeRed">
-                
+                <BoxView Color="Blue" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="Jan Novák" HorizontalOptions="Center"/>
             </StackLayout>
             <ScrollView HeightRequest="200" BackgroundColor="Yellow">
                 <StackLayout>
-                    <Label Text="Name Name" HorizontalOptions="Center"/>
+                    <Label Text="Phone" HorizontalOptions="Center"/>
+                    <Label Text="123456789" HorizontalOptions="Center"/>
                 </StackLayout>
             </ScrollView>
         </StackLayout>
