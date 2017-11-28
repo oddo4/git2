@@ -5,10 +5,24 @@
              x:Class="ContactsApp.MainPage"
              Title="Contacts">
     <ContentPage.Content>
-        <StackLayout>
-            <Button Text="Profile" 
-                HorizontalOptions="Center" 
-                Clicked="Profile_Clicked"/>
-        </StackLayout>
+        <ListView x:Name="listViewContacts">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center" Padding="40,10,40,10">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Profile_Clicked"/>
+                            </StackLayout.GestureRecognizers>
+                            <Frame BackgroundColor="Transparent" Padding="0,0,0,0" CornerRadius="0" HasShadow="False">
+                                <Label x:Name="labelFName" Text="{Binding FirstName}" FontSize="Medium" FontAttributes="None" HorizontalOptions="Start"/>
+                            </Frame>
+                            <Frame BackgroundColor="Transparent" Padding="0,0,0,0" CornerRadius="0" HasShadow="False">
+                                <Label x:Name="labelLName" Text="{Binding LastName}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Start"/>
+                            </Frame>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>
