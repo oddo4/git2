@@ -2,22 +2,30 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ContactsApp"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              x:Class="ContactsApp.MainPage"
              Title="Contacts">
     <ContentPage.Content>
-        <ListView x:Name="listViewContacts">
+        <ListView x:Name="listViewContacts" HasUnevenRows="True" ItemTapped="SelectedProfile" BackgroundColor="White" SeparatorColor="#00A6FF">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center" Padding="40,10,40,10">
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Profile_Clicked"/>
-                            </StackLayout.GestureRecognizers>
-                            <Frame BackgroundColor="Transparent" Padding="0,0,0,0" CornerRadius="0" HasShadow="False">
-                                <Label x:Name="labelFName" Text="{Binding FirstName}" FontSize="Medium" FontAttributes="None" HorizontalOptions="Start"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center" Padding="10,10,10,10">
+                            <Frame BackgroundColor="Transparent" Padding="10,0,10,0" CornerRadius="0" HasShadow="False">
+                                <controls:CircleImage Source="{Binding ProfilePhoto}" Aspect="AspectFit" FillColor="White">
+                                    <controls:CircleImage.WidthRequest>
+                                        <OnPlatform x:TypeArguments="x:Double" Android="50"/>
+                                    </controls:CircleImage.WidthRequest>
+                                    <controls:CircleImage.HeightRequest>
+                                        <OnPlatform x:TypeArguments="x:Double" Android="50"/>
+                                    </controls:CircleImage.HeightRequest>
+                                </controls:CircleImage>
                             </Frame>
-                            <Frame BackgroundColor="Transparent" Padding="0,0,0,0" CornerRadius="0" HasShadow="False">
-                                <Label x:Name="labelLName" Text="{Binding LastName}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Start"/>
+                            <Frame BackgroundColor="Transparent" Padding="0,0,0,0" VerticalOptions="Center" CornerRadius="0" HasShadow="False">
+                                <Label Text="{Binding FirstName}" FontSize="Medium" FontAttributes="None" HorizontalOptions="Start"/>
+                            </Frame>
+                            <Frame BackgroundColor="Transparent" Padding="0,0,0,0" VerticalOptions="Center" CornerRadius="0" HasShadow="False">
+                                <Label Text="{Binding LastName}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Start"/>
                             </Frame>
                         </StackLayout>
                     </ViewCell>

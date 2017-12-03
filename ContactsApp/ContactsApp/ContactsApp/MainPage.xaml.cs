@@ -13,21 +13,18 @@ namespace ContactsApp
         {
             InitializeComponent();
 
-            List<Contact> listContact = new List<Contact>();
+            List<Classes.Person> listContact = new List<Classes.Person>();
 
-            for (int i = 0; i < 20; i++)
-            {
-                listContact.Add(new Contact() { FirstName = "Jan", LastName = "Novák" });
-            }
+            listContact.Add(new Classes.Person() { ProfilePhoto = ImageSource.FromFile("defaultavatar.jpg"), FirstName = "Jan", LastName = "Novák" });
 
             listViewContacts.ItemsSource = listContact;
             
         }
 
-        private async void Profile_Clicked(object sender, EventArgs e)
+        private void SelectedProfile(object sender, ItemTappedEventArgs e)
         {
-            await Navigation.PushAsync(new Profile());
-            
+            Navigation.PushAsync(new Profile(e.Item as Classes.Person));
+            listViewContacts.SelectedItem = null;
         }
     }
 }
