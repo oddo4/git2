@@ -1,6 +1,8 @@
 ﻿using ImageCircle.Forms.Plugin.Abstractions;
+using Plugin.Messaging;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,31 +15,71 @@ namespace ContactsApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Profile : ContentPage
     {
+        Classes.Person Person;
+        ObservableCollection<Classes.Person> listContact;
+        int collectionID = 0;
+
         public Profile()
         {
             InitializeComponent();
+            
         }
 
-        public Profile(Classes.Person person)
+        public Profile(ObservableCollection<Classes.Person> list, int ID, Classes.Person person)
         {
             InitializeComponent();
-            //person.PhoneList.Add(new Classes.PhoneNumber() { PNumber = "123456789" });
-            //person.PhoneList.Add(new Classes.PhoneNumber() { PNumber = "123456789" });
-            //person.EmailList.Add("novak@example.com");
-            cirImgProfilePhoto.Source = person.ProfilePhoto;
-            labelFullName.Text = person.GetFullName();
-            CreateContactRow(0, person.PhoneList[0]);
-            CreateContactRow(1, person.EmailList[0]);
+            Person = person;
+            listContact = list;
+            collectionID = ID;
+
+            ShowContact();
         }
 
-        private void Msg_Tapped(object sender, EventArgs e)
+        private void ShowContact()
         {
-            labelFullName.Text = "haha";
+            this.Title = Person.GetFullName();
+            cirImgProfilePhoto.Source = Person.ProfilePhoto;
+            labelFullName.Text = Person.GetFullName();
+            foreach (string item in Person.PhoneList)
+            {
+                CreateContactRow(0, item);
+            }
+            foreach (string item in Person.EmailList)
+            {
+                CreateContactRow(1, item);
+            }
         }
 
-        private void Call_Tapped(object sender, EventArgs e)
+        /*private void EditContact_Activated(object sender, EventArgs e)
         {
-            labelFullName.Text = "hahaha";
+            Navigation.PushAsync(new EditContact(listContact, Person));
+        }*/
+
+        private async void EditContact_Clicked(object sender, EventArgs e)
+        {
+            EditContact editContact = new EditContact(listContact, collectionID, Person);
+
+            editContact.Disappearing += BackToProfile;
+
+            await Navigation.PushAsync(editContact);
+        }
+
+        private void BackToProfile(object sender, EventArgs e)
+        {
+            PhoneList.Children.Clear();
+            EmailList.Children.Clear();
+            ShowContact();
+            ((EditContact)sender).Disappearing -= BackToProfile;
+        }
+
+        private void Msg_Tapped(string number)
+        {
+            
+        }
+
+        private void Call_Tapped(string number)
+        {
+
         }
 
         private void SendMail_Tapped(object sender, EventArgs e)
@@ -68,13 +110,13 @@ namespace ContactsApp
                     CreatePhoneRow(grid, value);
                     layout.Children.Add(grid);
 
-                    Phones.Children.Add(layout);
+                    PhoneList.Children.Add(layout);
                     break;
                 case 1:
                     CreateMailRow(grid, value);
                     layout.Children.Add(grid);
 
-                    Emails.Children.Add(layout);
+                    EmailList.Children.Add(layout);
                     break;
             }
         }
@@ -84,14 +126,14 @@ namespace ContactsApp
             var frameMsg = new Frame() { BackgroundColor = Color.Transparent, Padding = new Thickness(10, 0, 10, 0), CornerRadius = 0, HasShadow = false };
             var imageMsg = new Image() { Source = "msg.png", HeightRequest = 20, WidthRequest = 20 };
             var imageMsgTap = new TapGestureRecognizer();
-            imageMsgTap.Tapped += Msg_Tapped;
+            imageMsgTap.Tapped += (sender, e) => Msg_Tapped(number);
             imageMsg.GestureRecognizers.Add(imageMsgTap);
             frameMsg.Content = imageMsg; 
 
             var frameCall = new Frame() { BackgroundColor = Color.Transparent, Padding = new Thickness(10, 0, 10, 0), CornerRadius = 0, HasShadow = false };
             var imageCall = new Image() { Source = "call.png", HeightRequest = 20, WidthRequest = 20 };
             var imageCallTap = new TapGestureRecognizer();
-            imageCallTap.Tapped += Call_Tapped;
+            imageCallTap.Tapped += (sender, e) => Call_Tapped(number);
             imageCall.GestureRecognizers.Add(imageCallTap);
             frameCall.Content = imageCall;
 

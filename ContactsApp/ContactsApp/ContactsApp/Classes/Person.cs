@@ -14,13 +14,11 @@ namespace ContactsApp.Classes
         public string LastName { get; set; }
         public List<string> PhoneList = new List<string>();
         public List<string> EmailList = new List<string>();
-        [JsonIgnore]
         public ImageSource ProfilePhoto { get; set; }
 
         public Person()
         {
-            this.PhoneList.Add("123456789");
-            this.EmailList.Add("novak@example.com");
+            
         }
 
         public string GetFullName()
