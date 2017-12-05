@@ -13,6 +13,7 @@ namespace ContactsApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditContact : ContentPage
     {
+        MainPage MainPage;
         Classes.Person Person;
         ObservableCollection<Classes.Person> listContact;
         bool newContact = false;
@@ -23,12 +24,13 @@ namespace ContactsApp
             InitializeComponent();
 
         }
-        public EditContact(ObservableCollection<Classes.Person> list, int ID, Classes.Person person)
+        public EditContact(ObservableCollection<Classes.Person> list, int ID, Classes.Person person, MainPage mainPage = null)
         {
             InitializeComponent();
             Person = person;
             listContact = list;
             collectionID = ID;
+            MainPage = mainPage;
 
             if (Person.GetFullName() != " ")
             {
@@ -120,9 +122,9 @@ namespace ContactsApp
                 {
                     listContact.Add(Person);
 
-                    listContact = new ObservableCollection<Classes.Person>(from i in listContact orderby i.LastName select i);
+                    MessagingCenter.Send(MainPage, "UpdateList");
 
-                    Navigation.PushAsync(new Profile(listContact, listContact.IndexOf(Person), Person));
+                    Navigation.PushAsync(new Profile(listContact, listContact.IndexOf(Person), Person, MainPage));
                     Navigation.RemovePage(this);
                 }
                 else

@@ -14,7 +14,12 @@ namespace ContactsApp
         public MainPage()
         {
             InitializeComponent();
-            
+
+            MessagingCenter.Subscribe<MainPage>(this, "UpdateList", (sender) => {
+                listContact = new ObservableCollection<Classes.Person>(listContact.OrderBy(c => c.LastName));
+                listViewContacts.ItemsSource = listContact;
+            });
+
             Classes.Person novak = new Classes.Person() { FirstName = "Jan", LastName = "Novák", ProfilePhoto = "defaultavatar.jpg"};
             novak.PhoneList.Add("123456789");
             novak.EmailList.Add("novak@example.com");
@@ -24,25 +29,17 @@ namespace ContactsApp
             
         }
 
-        private async void SelectedProfile(object sender, ItemTappedEventArgs e)
+        private void SelectedProfile(object sender, ItemTappedEventArgs e)
         {
-            Profile profile = new Profile(listContact, listContact.IndexOf((Classes.Person)listViewContacts.SelectedItem), e.Item as Classes.Person);
+            Profile profile = new Profile(listContact, listContact.IndexOf((Classes.Person)listViewContacts.SelectedItem), e.Item as Classes.Person, this);
             listViewContacts.SelectedItem = null;
 
-            profile.Disappearing += BackToContacts;
-
-            await Navigation.PushAsync(profile);
-        }
-
-        private void BackToContacts(object sender, EventArgs e)
-        {
-            listViewContacts.ItemsSource = listContact;
-            ((Profile)sender).Disappearing -= BackToContacts;
+            Navigation.PushAsync(profile);
         }
 
         private void AddContact_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new EditContact(listContact, 0, new Classes.Person() { ProfilePhoto = "defaultavatar.jpg" }));
+            Navigation.PushAsync(new EditContact(listContact, 0, new Classes.Person() { ProfilePhoto = "defaultavatar.jpg" }, this));
         }
     }
 }

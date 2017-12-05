@@ -25,9 +25,10 @@ namespace ContactsApp
             
         }
 
-        public Profile(ObservableCollection<Classes.Person> list, int ID, Classes.Person person)
+        public Profile(ObservableCollection<Classes.Person> list, int ID, Classes.Person person, MainPage MainPage = null)
         {
             InitializeComponent();
+            MessagingCenter.Send(MainPage, "UpdateList");
             Person = person;
             listContact = list;
             collectionID = ID;
