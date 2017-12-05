@@ -22,15 +22,20 @@ namespace FightBehaviour
     public partial class MainWindow : Window
     {
         DispatcherTimer BattleTimer;
-        Player p = new Player("Player", 10, 10);
-        Scorpion s = new Scorpion("Scorpion", 10, 10);
+        Classes.Player p = new Classes.Player("Player", 10, 10);
+        Classes.Monster s = new Classes.Monster("Scorpion", 10, 10);
 
         public MainWindow()
         {
             InitializeComponent();
             BattleTimer.Interval = new TimeSpan(0,0,1);
-            BattleTimer.Tick
+            BattleTimer.Tick += TimerAction;
             BattleTimer.Start();
+
+        }
+
+        private void TimerAction(object sender, EventArgs e)
+        {
 
         }
     }

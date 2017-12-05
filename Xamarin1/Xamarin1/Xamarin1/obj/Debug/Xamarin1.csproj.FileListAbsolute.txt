@@ -1,0 +1,16 @@
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1\bin\Debug\Xamarin1.dll
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1\bin\Debug\Xamarin1.pdb
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1\bin\Debug\Xamarin.Forms.Core.dll
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1\bin\Debug\Xamarin.Forms.Platform.dll
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1\bin\Debug\Xamarin.Forms.Xaml.dll
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1\bin\Debug\Xamarin.Forms.Core.pdb
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1\bin\Debug\Xamarin.Forms.Core.xml
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1\bin\Debug\Xamarin.Forms.Platform.pdb
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1\bin\Debug\Xamarin.Forms.Xaml.pdb
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1\bin\Debug\Xamarin.Forms.Xaml.xml
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1\obj\Debug\Xamarin1.csprojResolveAssemblyReference.cache
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1\obj\Debug\Xamarin1.csproj.CoreCompileInputs.cache
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1\obj\Debug\Xamarin1.MainPage.xaml.g.cs
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1\obj\Debug\Xamarin1.App.xaml.g.cs
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1\obj\Debug\Xamarin1.dll
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1\obj\Debug\Xamarin1.pdb

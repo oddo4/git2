@@ -105,7 +105,10 @@ namespace ContactsApp
                     Frame frame = (Frame)grid.Children[0];
                     Entry entry = (Entry)frame.Content;
 
-                    Person.PhoneList.Add(entry.Text);
+                    if (entry.Text != "")
+                    {
+                        Person.PhoneList.Add(entry.Text);
+                    }
                 }
 
                 for (int j = 0; j < EmailList.Children.Count; j++)
@@ -115,7 +118,10 @@ namespace ContactsApp
                     Frame frame = (Frame)grid.Children[0];
                     Entry entry = (Entry)frame.Content;
 
-                    Person.EmailList.Add(entry.Text);
+                    if (entry.Text != "")
+                    {
+                        Person.EmailList.Add(entry.Text);
+                    }
                 }
 
                 if (newContact)

@@ -1,0 +1,2 @@
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1.UWP\Xamarin1.UWP.csproj;x86
+D:\bounlfi15\git5\Xamarin1\Xamarin1\Xamarin1\Xamarin1.csproj;neutral
