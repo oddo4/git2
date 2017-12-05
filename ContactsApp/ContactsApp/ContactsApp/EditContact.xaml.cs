@@ -124,7 +124,7 @@ namespace ContactsApp
 
                     MessagingCenter.Send(MainPage, "UpdateList");
 
-                    Navigation.PushAsync(new Profile(listContact, listContact.IndexOf(Person), Person, MainPage));
+                    Navigation.PushAsync(new Profile(listContact, listContact.IndexOf(Person), Person));
                     Navigation.RemovePage(this);
                 }
                 else

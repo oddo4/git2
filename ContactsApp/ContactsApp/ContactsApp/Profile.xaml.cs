@@ -15,6 +15,7 @@ namespace ContactsApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Profile : ContentPage
     {
+        MainPage MainPage;
         Classes.Person Person;
         ObservableCollection<Classes.Person> listContact;
         int collectionID = 0;
@@ -25,13 +26,13 @@ namespace ContactsApp
             
         }
 
-        public Profile(ObservableCollection<Classes.Person> list, int ID, Classes.Person person, MainPage MainPage = null)
+        public Profile(ObservableCollection<Classes.Person> list, int ID, Classes.Person person, MainPage mainPage = null)
         {
             InitializeComponent();
-            MessagingCenter.Send(MainPage, "UpdateList");
             Person = person;
             listContact = list;
             collectionID = ID;
+            MainPage = mainPage;
 
             ShowContact();
         }
@@ -69,6 +70,7 @@ namespace ContactsApp
         {
             PhoneList.Children.Clear();
             EmailList.Children.Clear();
+            MessagingCenter.Send(MainPage, "UpdateList");
             ShowContact();
             ((EditContact)sender).Disappearing -= BackToProfile;
         }
